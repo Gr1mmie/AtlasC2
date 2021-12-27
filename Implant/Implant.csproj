@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6DE5ED01-804C-49BF-8F70-DF032CC6C189}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Implant</RootNamespace>
+    <AssemblyName>Implant</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="JSON\Classes.cs" />
+    <Compile Include="Models\Comms\Abstracts\Comms.cs" />
+    <Compile Include="Models\Comms\HTTPComms.cs" />
+    <Compile Include="Models\Implant\Abstracts\ImplantCommands.cs" />
+    <Compile Include="Models\Implant\Abstracts\ImplantOptions.cs" />
+    <Compile Include="Models\Implant\Data\ImplantTaskData.cs" />
+    <Compile Include="Models\Implant\Data\ImplantTaskOptions.cs" />
+    <Compile Include="Models\Implant\ImplantData.cs" />
+    <Compile Include="Models\Implant\ImplantTask.cs" />
+    <Compile Include="Models\Implant\ImplantTaskOut.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\Execute\AssemMethodQuery.cs" />
+    <Compile Include="Tasks\Execute\AssemQuery.cs" />
+    <Compile Include="Tasks\Execute\Cd.cs" />
+    <Compile Include="Tasks\Execute\CMDShell.cs" />
+    <Compile Include="Tasks\Execute\ExecuteAssem.cs" />
+    <Compile Include="Tasks\Execute\ExecuteAssemMethod.cs" />
+    <Compile Include="Tasks\Execute\Functions\CMDShellFunctions.cs" />
+    <Compile Include="Tasks\Execute\Functions\LoadFunctions.cs" />
+    <Compile Include="Tasks\Execute\Functions\PSShellFunctions.cs" />
+    <Compile Include="Tasks\Execute\Load.cs" />
+    <Compile Include="Tasks\Execute\PSShell.cs" />
+    <Compile Include="Tasks\Options\AssemMethodQuery.cs" />
+    <Compile Include="Tasks\Options\AssemQuery.cs" />
+    <Compile Include="Tasks\Options\Cd.cs" />
+    <Compile Include="Tasks\Options\CMDShell.cs" />
+    <Compile Include="Tasks\Options\ExecuteAssem.cs" />
+    <Compile Include="Tasks\Options\ExecuteAssemMethod.cs" />
+    <Compile Include="Tasks\Options\Load.cs" />
+    <Compile Include="Tasks\Options\PSShell.cs" />
+    <Compile Include="Utils\Extensions\Extensions.cs" />
+    <Compile Include="Utils\ImplantDataUtils.cs" />
+    <Compile Include="Utils\ImplantOptionUtils.cs" />
+    <Compile Include="Utils\ImplantTaskUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
