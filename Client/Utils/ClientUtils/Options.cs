@@ -20,7 +20,6 @@ namespace Client.Utils
                 $"\t{nameof(ImplantAddr)}:{ImplantAddr, 19}\n"+
                 "Tasks:\n" +
                 $"\t{nameof(TaskName)}:{TaskName, 14}\n"
-                //$"\t{nameof(Debug)}:{Debug, 18}"
             );
 
 
