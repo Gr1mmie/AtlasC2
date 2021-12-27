@@ -22,7 +22,6 @@ namespace Client.Utils
                 $"\t{nameof(TaskName)}:{TaskName, 14}\n"
             );
 
-
             return _out.ToString();
         }
     }

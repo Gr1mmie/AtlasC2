@@ -1,7 +1,4 @@
-﻿
-using Newtonsoft.Json;
-
-using Implant.Models;
+﻿using Implant.Models;
 using Implant.Utils;
 
 namespace Implant.Tasks.Execute
@@ -17,6 +14,7 @@ namespace Implant.Tasks.Execute
             // pass args as string and convert to array here. i.e "cd /idk/" <- take [1] and set to path,
             // same for basic utils like ls, mkdir, rmdir, pwd, etc.
 
+            /*
             var opts = ImplantOptionUtils.ReturnMethod(task);
             var args = ImplantOptionUtils.ParseArgs(task.Args);
 
@@ -30,6 +28,7 @@ namespace Implant.Tasks.Execute
                     }
                 }
             }
+            */
 
             return path;
         }
