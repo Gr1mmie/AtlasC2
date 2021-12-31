@@ -15,21 +15,17 @@ namespace Client.Utils
             StringBuilder _out = new StringBuilder();
 
             if (_utils.Count == 0) { Init.UtilInit(); }
+            if (_opts.Count == 0 ) { Init.OptInit(); }
+            if (_adminTask.Count == 0) { Init.AdminUtilInit(); }    
 
+            _out.AppendLine("\nClient Utils\n____________\n");
             foreach (Models.Util cmd in _utils){ _out.AppendLine($"{cmd.UtilName,-25} {cmd.Desc}"); }
 
-            // separate based on usage
-            /* ie
-             * ImplantUtils
-             * ------------
-             * xyz
-             * 
-             * ListenerUtils
-             * -------------
-             * xyz
-             * 
-             * etc
-             */
+            _out.AppendLine("\nImplant Tasks\n_____________\n");
+            foreach (Models.Task cmd in _opts) { _out.AppendLine($"{cmd.TaskName, -25} {cmd.Desc}"); }
+
+            _out.AppendLine("\nImplant Admin Tasks\n___________________\n");
+            foreach(Models.AdminTask cmd in _adminTask) { _out.AppendLine($"{cmd.TaskName,-25} {cmd.Desc}"); }
 
             return _out.ToString();
         }

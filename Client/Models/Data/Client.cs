@@ -27,6 +27,7 @@ namespace Client.Models
 
         public static readonly List<Util> _utils = new List<Util>();
         public static readonly List<Task> _opts = new List<Task>();
+        public static readonly List<AdminTask> _adminTask = new List<AdminTask>();
 
     }
 }

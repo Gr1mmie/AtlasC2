@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+
+using Implant.Models;
 
 namespace Implant.Tasks.Execute
 {
-    internal class Mkfile
+    internal class Mkfile : ImplantCommands
     {
+        private string filePath { get; set; }
+        public override string Name => "MkFile";
+
+        public override string Execute(ImplantTask task)
+        {
+            filePath = task.Args;
+
+            File.Create(filePath);
+
+            if(File.Exists(filePath)) { return $"[*] {filePath} created"; }
+            return $"[-] Failed to create {filePath}";
+        }
     }
 }

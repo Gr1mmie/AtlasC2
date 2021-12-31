@@ -42,9 +42,13 @@ namespace Implant
         public static void HandleTask(ImplantTask task) {
             var command = _commands.FirstOrDefault(cmd => cmd.Name.Equals(task.Command, StringComparison.InvariantCultureIgnoreCase));
             if (command is null) { return; }
-
-            var _out = command.Execute(task);
-            SendTaskOut(task.Id, _out);
+            try
+            {
+                var _out = command.Execute(task);
+                SendTaskOut(task.Id, _out);
+            } catch (Exception e) { 
+                SendTaskOut(task.Id, e.Message);
+            }
         }
 
         public static void HandleTasks(IEnumerable<ImplantTask> tasks) {

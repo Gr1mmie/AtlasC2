@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Principal;
+
+using Implant.Models;
 
 namespace Implant.Tasks.Execute
 {
-    internal class Getuid
+    class Getuid : ImplantCommands
     {
+        public override string Name => "Getuid";
+
+        public override string Execute(ImplantTask task)
+        {
+            return WindowsIdentity.GetCurrent().Name;
+        }
     }
 }

