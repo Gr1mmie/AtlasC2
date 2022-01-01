@@ -18,7 +18,7 @@ namespace Client.Utils.TaskUtils
             {
 
                 if (opts is null) { throw new AtlasException($"[*] Usage: Cd [Path]\n"); }
-                if (!(opts.Length == 2)) { throw new AtlasException($"[*] Usage: Cd [Path]\n"); }            
+                if (opts.Length > 2) { throw new AtlasException($"[*] Usage: Cd [Path]\n"); }            
                 if(CurrentImplant is null) { throw new AtlasException("[-] No connected implant"); }
 
                 newDir = opts[1];

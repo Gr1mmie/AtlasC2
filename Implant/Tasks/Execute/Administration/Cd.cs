@@ -21,6 +21,12 @@ namespace Implant.Tasks.Execute
                     path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 }
 
+                if (path == ".."){
+                    string[] dirArr = Directory.GetCurrentDirectory().ToString().Split('\\');
+                    Array.Resize(ref dirArr, dirArr.Length - 1);
+                    path = string.Join("\\", dirArr);
+                }
+
                 Directory.SetCurrentDirectory(path);
 
                 return $"[*] Path set to {Directory.GetCurrentDirectory()}";

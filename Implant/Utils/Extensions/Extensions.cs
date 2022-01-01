@@ -20,5 +20,9 @@ namespace Implant.Utils
 
             using (var stream = new MemoryStream(data)) { return (T) serializer.ReadObject(stream); }
         }
+
+        public static string Align(this object T , int lenth) {
+            return T.ToString().PadRight(lenth);
+        }
     }
 }

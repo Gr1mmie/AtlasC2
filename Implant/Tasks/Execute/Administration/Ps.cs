@@ -3,10 +3,16 @@ using System.Diagnostics;
 
 using Implant.Models;
 
+using static Implant.Utils.Extensions;
+
 namespace Implant.Tasks.Execute
 {
     class Ps : ImplantCommands
     {
+        private int procIDLen { get; set; }
+        private int procNameLen { get; set; }
+        private int procSessionIDLen { get; set; }  
+
         public override string Name => "Ps";
 
         public override string Execute(ImplantTask task)
@@ -14,16 +20,58 @@ namespace Implant.Tasks.Execute
 
             StringBuilder _out = new StringBuilder();
 
-            _out.AppendLine($"{"PID", -15} {"ProcName", -35} {"SessionId",-45}");
-            _out.AppendLine($"{"---", -15} {"--------", -35} {"---------",-45}");
-
             var procs = Process.GetProcesses();
 
-            foreach(var proc in procs){
-                _out.AppendLine($"{proc.Id, -15} {proc.ProcessName, -35} {proc.SessionId, -45}");
+            procIDLen = psParse.getMaxProcIDLen(procs);
+            procNameLen = psParse.getMaxProcNameLen(procs) + procIDLen; 
+            procSessionIDLen = psParse.getMaxProcSessionIDLen(procs) + procNameLen;
+
+
+            _out.AppendLine($"{"PID".Align(procIDLen)} {"ProcName".Align(procNameLen)} {"SessionId".Align(procSessionIDLen)}");
+            _out.AppendLine($"{"---".Align(procIDLen)} {"--------".Align(procNameLen)} {"---------".Align(procSessionIDLen)}");
+
+            foreach (var proc in procs){
+                _out.AppendLine($"{proc.Id.Align(procIDLen)} {proc.ProcessName.Align(procNameLen)} {proc.SessionId.Align(procSessionIDLen)}");
             }
 
             return _out.ToString();
+        }
+
+    }
+
+    public sealed class psParse
+    {
+        public static int getMaxProcIDLen(Process[] procs) {
+            var maxProcIDLen = 0;
+            foreach (var proc in procs) {
+                if (proc.Id.ToString().Length > maxProcIDLen) {
+                    maxProcIDLen = proc.Id.ToString().Length;
+                }
+            }
+
+            return maxProcIDLen;
+        }
+
+        public static int getMaxProcNameLen(Process[] procs) { 
+            int maxProcNameLen = 0;
+            foreach (var proc in procs) {
+                if (proc.ProcessName.Length > maxProcNameLen) { 
+                    maxProcNameLen = proc.ProcessName.Length;
+                }
+            }
+
+            return maxProcNameLen;
+        }
+
+        public static int getMaxProcSessionIDLen(Process[] procs){
+            int maxProcSessionIDLen = 0;
+            foreach (var proc in procs) {
+                if (proc.SessionId.ToString().Length > maxProcSessionIDLen) { 
+                    maxProcSessionIDLen = proc.SessionId.ToString().Length;
+                }
+            }
+
+            return maxProcSessionIDLen;
         }
     }
 }

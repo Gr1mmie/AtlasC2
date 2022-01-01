@@ -17,7 +17,7 @@ namespace Client.Utils.TaskUtils.AdminUtils
             {
 
                 if (opts is null) { throw new AtlasException($"[*] Usage: Ls [Path]\n"); }
-                if (!(opts.Length == 2)) { throw new AtlasException($"[*] Usage: Ls [Path]\n"); }
+                if (opts.Length > 2) { throw new AtlasException($"[*] Usage: Ls [Path]\n"); }
                 if (CurrentImplant is null) { throw new AtlasException("[-] No connected implant"); }
 
                 path = opts[1];
