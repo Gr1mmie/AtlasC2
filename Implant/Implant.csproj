@@ -64,6 +64,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tasks\Execute\Administration\Getuid.cs" />
+    <Compile Include="Tasks\Execute\Administration\Ipconfig.cs" />
     <Compile Include="Tasks\Execute\Administration\Ls.cs" />
     <Compile Include="Tasks\Execute\Administration\Mkdir.cs" />
     <Compile Include="Tasks\Execute\Administration\Mkfile.cs" />

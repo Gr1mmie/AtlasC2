@@ -56,6 +56,7 @@ namespace Implant.Tasks.Execute
 
             }
 
+            _out.AppendLine();  
             return _out.ToString();
         }
     }
@@ -85,7 +86,7 @@ namespace Implant.Tasks.Execute
                 }   
             }
 
-            return maxfileNameLen; 
+            return maxfileNameLen + 5; 
         }
     }
 }

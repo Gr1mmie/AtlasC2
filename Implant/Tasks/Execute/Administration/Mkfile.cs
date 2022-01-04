@@ -15,8 +15,8 @@ namespace Implant.Tasks.Execute
 
             File.Create(filePath);
 
-            if(File.Exists(filePath)) { return $"[*] {filePath} created"; }
-            return $"[-] Failed to create {filePath}";
+            if(File.Exists(filePath)) { return $"[*] {filePath} created\n"; }
+            return $"[-] Failed to create {filePath}\n";
         }
     }
 }

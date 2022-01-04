@@ -12,15 +12,23 @@ namespace Client.Utils
         {
             StringBuilder _out = new StringBuilder();
 
+            var len = nameof(TeamServerAddr).Length + 25;
+
             _out.AppendLine(
                 "TeamServer:\n" +
-                $"\t{nameof(TeamServerAddr)}:{TeamServerAddr, 25}\n" +
+                $"\t{nameof(TeamServerAddr)} : {TeamServerAddr.Align(len) }\n" +
                 "Implant:\n" +
-                $"\t{nameof(CurrentImplant)}:{CurrentImplant, 12}\n" +
-                $"\t{nameof(ImplantAddr)}:{ImplantAddr, 19}\n"+
-                "Tasks:\n" +
-                $"\t{nameof(TaskName)}:{TaskName, 14}\n"
-            );
+                $"\t{nameof(CurrentImplant)} : {CurrentImplant.Align(len)}\n" +
+                $"\t{nameof(ImplantAddr)} : {ImplantAddr.Align(len)}\n"
+                );
+
+            if (TaskName is not null)
+            {
+                _out.AppendLine(
+                    "Tasks:\n" +
+                    $"\t{nameof(TaskName)} : {TaskName.Align(len)}\n"
+                );
+            }
 
             return _out.ToString();
         }

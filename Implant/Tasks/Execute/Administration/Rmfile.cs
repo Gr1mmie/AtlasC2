@@ -14,8 +14,8 @@ namespace Implant.Tasks.Execute
 
             File.Delete(targetFile);
 
-            if(!(File.Exists(targetFile))) { return $"[*] {targetFile} removed"; }
-            return $"[-] Failed to remove {targetFile}";
+            if(!(File.Exists(targetFile))) { return $"[*] {targetFile} removed\n"; }
+            return $"[-] Failed to remove {targetFile}\n";
         }
     }
 }

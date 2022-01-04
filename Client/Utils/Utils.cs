@@ -64,6 +64,8 @@ namespace Client.Utils
 
         }
 
+        public static string Align(this object T, int lenth) {  return T.ToString().PadRight(lenth); }
+
         public static void ViewOption(string option) { WriteLine($"{option}"); }
 
     }

