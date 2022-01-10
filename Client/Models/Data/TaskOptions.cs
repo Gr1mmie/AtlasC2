@@ -7,6 +7,7 @@
         public static object assemName = new AssemName();
         public static object assemType = new AssemType();
         public static object assemMethod = new AssemMethod();
+        public static object assemParams = new AssemParams();
         public static object retryCount = new Retry_count();
         public static object timeout = new Timeout();
         public static object command = new Command();
@@ -77,9 +78,16 @@
         public class AssemMethod {
 
             public string Name { get; set; } = nameof(assemMethod);
-            public string Value { get; set; } = "somemethod";
+            public string Value { get; set; } = "";
             public string Desc { get; set; } = "select assembly method";
         }
-        
+
+        public class AssemParams
+        {
+            public string Name { get; set; } = nameof(assemParams);
+            public string Value { get; set; } = "";
+            public string Desc { get; set; } = "parameters to pass to loaded assembly";
+        }
+
     }
 }

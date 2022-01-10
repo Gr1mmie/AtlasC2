@@ -10,6 +10,6 @@ namespace Implant.Tasks.Options
     {
         public override string TaskName => "AssemMethodQuery";
 
-        public override List<object> Data => new List<object> { assemType, assemMethod};
+        public override List<object> Data => new List<object> { assemName };
     }
 }

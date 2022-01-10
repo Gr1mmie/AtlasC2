@@ -8,5 +8,5 @@ namespace Implant.Tasks.Options
 {
     class ExecuteAssemMethod : ImplantOptions
     {
-        public override string TaskName => "ExecuteAssemMethod";         public override List<object> Data => new List<object> { assemType, assemMethod };    }
+        public override string TaskName => "ExecuteAssemMethod";         public override List<object> Data => new List<object> { assemName, assemType, assemMethod, assemParams };    }
 }

@@ -28,12 +28,12 @@ namespace Client.Utils
                 foreach (var opt in optList){
                     if (opt.GetPropertyValue("Name").ToString().Equals(OptName, System.StringComparison.InvariantCultureIgnoreCase)) {
                         opt.SetPropertyValue("Value", OptValue);
-                        break;
+                        return $"[*] {OptName} set to {OptValue}\n";
                     }
-                    else { throw new AtlasException($"[-] Option {OptName} does not exist in the current context\n"); }
                 }
 
-                return $"[*] {OptName} set to {OptValue}\n";
+                throw new AtlasException($"[-] Option {OptName} does not exist in the current context\n");
+
             } catch (AtlasException e ) { return $"{e.Message}"; }
         }
     }

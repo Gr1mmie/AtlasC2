@@ -4,8 +4,10 @@
     {
         public static object command = new Command();
         public static object path = new Path();
+        public static object assemName = new AssemName();
         public static object assemPath = new AssemPath();
         public static object assemType = new AssemType();
+        public static object assemParams = new AssemParams();
         public static object assemMethod = new AssemMethod();
 
         public class Command
@@ -26,6 +28,12 @@
             public string Value { get; set; } = "";
         }
 
+        public class AssemName
+        {
+            public string Name { get; set; } = "assemName";
+            public string Value { get; set; } = "";
+        }
+
         public class AssemType
         {
             public string Name { get; set; } = "assemType";
@@ -35,6 +43,12 @@
         public class AssemMethod
         {
             public string Name { get; set; } = "assemMethod";
+            public string Value { get; set; } = "";
+        }
+
+        public class AssemParams
+        {
+            public string Name { get; set; } = "assemParams";
             public string Value { get; set; } = "";
         }
 

@@ -9,6 +9,6 @@ namespace Client.Utils
     {
         public override string TaskName => "ExecuteAssemMethod";
         public override string Desc => "Executes specified method belonging to a loaded assem type";
-        public override List<Object> OptList { get; } = new List<object> { assemType, assemMethod };
+        public override List<Object> OptList { get; } = new List<object> { assemName, assemType, assemMethod, assemParams };
     }
 }

@@ -85,7 +85,6 @@
     <Compile Include="Tasks\Execute\PSShell.cs" />
     <Compile Include="Tasks\Options\AssemMethodQuery.cs" />
     <Compile Include="Tasks\Options\AssemQuery.cs" />
-    <Compile Include="Tasks\Options\Cd.cs" />
     <Compile Include="Tasks\Options\CMDShell.cs" />
     <Compile Include="Tasks\Options\ExecuteAssem.cs" />
     <Compile Include="Tasks\Options\ExecuteAssemMethod.cs" />

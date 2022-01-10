@@ -7,6 +7,7 @@ namespace Implant.Tasks.Execute
     class AssemMethodQuery : ImplantCommands
     {
         private string assemName { get; set; }
+        private string Args { get; set; }
 
         public override string Name => "AssemMethodQuery";
 
@@ -15,7 +16,8 @@ namespace Implant.Tasks.Execute
             StringBuilder _out = new StringBuilder();
             
             var opts = ImplantOptionUtils.ReturnMethod(task);
-            var args = ImplantOptionUtils.ParseArgs(task.Args);
+            Args = task.Args.Replace("\\", "");
+            var args = ImplantOptionUtils.ParseArgs(Args);
 
             foreach (var opt in opts)
             {
