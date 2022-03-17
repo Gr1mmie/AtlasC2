@@ -2,7 +2,7 @@
 
 using static Client.Models.Client;
 
-namespace Client.Utils.TaskUtils
+namespace Client.Utils
 {
     class Getuid : Models.AdminTask
     {

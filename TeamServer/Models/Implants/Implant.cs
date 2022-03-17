@@ -13,11 +13,9 @@ namespace TeamServer.Models
         private readonly List<ImplantTaskOut> _taskOut = new();
 
 
-        public Implant(ImplantData data){
-            Data = data;
-        }
+        public Implant(ImplantData data) { Data = data; }
 
-        public void PollImplant(){ LastSeen = DateTime.UtcNow; }
+        public void PollImplant() { LastSeen = DateTime.Now; }
 
         public void TaskQueue(ImplantTask task) { _pendingTasks.Enqueue(task); }
 

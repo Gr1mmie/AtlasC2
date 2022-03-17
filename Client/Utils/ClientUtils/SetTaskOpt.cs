@@ -16,10 +16,10 @@ namespace Client.Utils
         {
             try
             {
-                if ((TaskName is null)) { throw new AtlasException($"[-] Select a task before attempting to set task options\n"); }
+                if (TaskName is null) { throw new AtlasException($"[-] Select a task before attempting to set task options\n"); }
 
-                if (opts is null) { throw new AtlasException($"[*] Usage: SetTaskOpt [optionName] [optionValue]\n"); }
-
+                if (opts is null || opts.Length != 3) { throw new AtlasException($"[*] Usage: SetTaskOpt [optionName] [optionValue]\n"); }
+                
                 OptName = opts[1];
                 OptValue = opts[2];
 

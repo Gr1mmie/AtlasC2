@@ -12,6 +12,9 @@ namespace Implant.Tasks.Execute
         public override string Execute(ImplantTask task)
         {
             dirPath = task.Args;
+            var currentDir = Directory.GetCurrentDirectory();
+            
+            if (!(dirPath.Contains(currentDir))) { dirPath = $"{currentDir}\\{task.Args}"; }
 
             Directory.CreateDirectory(dirPath);
 

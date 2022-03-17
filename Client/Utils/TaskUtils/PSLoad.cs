@@ -2,7 +2,7 @@
 
 using static Client.Models.TaskOptions;
 
-namespace Client.Utils.TaskUtils
+namespace Client.Utils
 {
     class PSLoad : Models.Task
     {

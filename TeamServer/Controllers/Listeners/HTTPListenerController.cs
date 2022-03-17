@@ -33,14 +33,12 @@ namespace TeamServer.Controllers
 
             implant.PollImplant();
 
-            //System.Threading.Thread.Sleep(6000);
+            //System.Threading.Thread.Sleep(Jitter);
 
             if(HttpContext.Request.Method == "POST") {
                 string respBody;
 
-                using (var stream = new StreamReader(HttpContext.Request.Body)) {
-                    respBody = await stream.ReadToEndAsync();
-                }
+                using (var stream = new StreamReader(HttpContext.Request.Body)) { respBody = await stream.ReadToEndAsync(); }
 
                 var _out = JsonConvert.DeserializeObject<IEnumerable<ImplantTaskOut>>(respBody);
                 implant.AddTaskOut(_out);

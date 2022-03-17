@@ -21,6 +21,8 @@ namespace Implant.Tasks.Execute
         {
 
             targetPath = task.Args;
+            
+            var currentPath = Directory.GetCurrentDirectory();
 
             StringBuilder _out = new StringBuilder();
 
@@ -28,6 +30,7 @@ namespace Implant.Tasks.Execute
                 targetPath = Directory.GetCurrentDirectory();
             }
 
+            if (Directory.Exists($"{currentPath}\\{targetPath}")) { targetPath = $"{currentPath}\\{targetPath}"; }
 
             var dirs = Directory.GetDirectories(targetPath);
             var files = Directory.GetFiles(targetPath);

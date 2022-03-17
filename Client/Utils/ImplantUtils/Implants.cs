@@ -21,7 +21,7 @@ namespace Client.Utils
             {
                 StringBuilder _out = new StringBuilder();
                 
-                var implants = Comms.comms.SendGET($"{TeamServerAddr}/Implants").TrimStart('[').TrimEnd(']');
+                string implants = Comms.comms.SendGET($"{TeamServerAddr}/Implants").TrimStart('[').TrimEnd(']');
                 if (implants.Length == 0) { throw new AtlasException("[*] No active implants\n"); }
 
                 _out.AppendLine($"{"ImplantId",-20} {"Hostname",-25} {"Intergity",-20} {"LastSeen",-20}");
@@ -33,9 +33,10 @@ namespace Client.Utils
 
                 foreach(var _implant in implantList){
                     ImplantData = JsonConvert.DeserializeObject<JSON.Classes.ImplantData>(_implant);
-                    Models.Client.ImplantList.Add(ImplantData.data.id);
+                    string lastSeen = $"{ImplantData.lastSeen.Split("T")[1].Split(".")[0]} {ImplantData.lastSeen.Split("T")[0]}";
+                    ImplantList.Add(ImplantData.data.id);
                     _out.AppendLine($"{ImplantData.data.id,-20} {ImplantData.data.hostName, -25} {ImplantData.data.integrity, -20}" +
-                        $" {ImplantData.lastSeen, -20}");
+                        $" {lastSeen, -20} ");
                 }
 
                 ImplantList = ImplantList.Distinct().ToList();
@@ -46,5 +47,6 @@ namespace Client.Utils
             catch (System.Net.WebException) { return $"[-] Connection to teamserver could not be established, verify teamserver is active\n"; } 
 
         }
+
     }
 }

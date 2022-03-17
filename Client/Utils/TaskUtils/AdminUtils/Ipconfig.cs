@@ -2,7 +2,7 @@
 
 using static Client.Models.Client;
 
-namespace Client.Utils.TaskUtils.AdminUtils
+namespace Client.Utils
 {
     class Ipconfig : Models.AdminTask
     {

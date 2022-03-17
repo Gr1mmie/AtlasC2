@@ -60,7 +60,7 @@ namespace Client.Utils
                 WriteLine(_out);
             } catch (NotImplementedException) { WriteLine($"[-] Util {input} not yet implemented"); }
             catch (AtlasException e) { WriteLine(e.Message); }
-            catch (Exception e) { WriteLine($"{e}"); }
+            catch (Exception e) { WriteLine($"{e.Message}"); }
 
         }
 

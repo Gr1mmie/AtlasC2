@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using static Client.Models.TaskOptions;
-
 namespace Client.Utils
 {
     class AssemQuery : Models.Task

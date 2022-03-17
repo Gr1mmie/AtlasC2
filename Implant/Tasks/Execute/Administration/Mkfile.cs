@@ -12,10 +12,13 @@ namespace Implant.Tasks.Execute
         public override string Execute(ImplantTask task)
         {
             filePath = task.Args;
+            var currentDir = Directory.GetCurrentDirectory();
 
-            File.Create(filePath);
+            if (!(filePath.Contains(currentDir))) { filePath = $"{currentDir}\\{task.Args}"; }
 
-            if(File.Exists(filePath)) { return $"[*] {filePath} created\n"; }
+            File.Create($"{filePath}");
+
+            if(File.Exists($"{filePath}")) { return $"[*] {filePath} created\n"; }
             return $"[-] Failed to create {filePath}\n";
         }
     }

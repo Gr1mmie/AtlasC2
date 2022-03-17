@@ -37,13 +37,7 @@ namespace Implant.Utils
         public static ArgsRecv ParseArgs(string jsonData){
             return JsonConvert.DeserializeObject<ArgsRecv>(jsonData);
         }
-
-        /*
-        public static ArgsRecv ParseArgs(byte[] jsonData)
-        {
-            return JsonConvert.DeserializeObject<ArgsRecv>(jsonData);
-        }
-        */
+        
         
     }
 }

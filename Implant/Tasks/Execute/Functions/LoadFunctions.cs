@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -25,9 +26,28 @@ namespace Implant.Tasks.Execute
         }
 
         public static string ExecuteAssemEP(string assemName, string parameters){
+            var snapshotOut = Console.Out;
+            var snapshotErr = Console.Error;
+
+            var memStream = new MemoryStream();
+            var streamWriter = new StreamWriter(memStream) { AutoFlush = true };
+
+            Console.SetOut(streamWriter);
+            Console.SetError(streamWriter);
+
             Assembly assem = GetAssemblyByName(assemName);
-            var assemOut = assem.EntryPoint.Invoke(null, new object[] { new string[] { parameters } });
-            return assemOut.ToString();
+            assem.EntryPoint.Invoke(null, new object[] { new string[] { parameters } });
+
+            Console.Out.Flush();
+            Console.Error.Flush();
+
+            var assemOut = Encoding.UTF8.GetString(memStream.ToArray());
+
+            Console.SetOut(snapshotOut);
+            Console.SetError(snapshotErr);
+
+            return assemOut;
+
         }
 
         public static string ExecuteAssemMethod(string assemName, string assemType, string assemMethod, string parameters){

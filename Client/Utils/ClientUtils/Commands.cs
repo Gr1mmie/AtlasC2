@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 
 using static Client.Models.Client;
 
@@ -16,10 +17,16 @@ namespace Client.Utils
 
             if (_utils.Count == 0) { Init.UtilInit(); }
             if (_opts.Count == 0 ) { Init.OptInit(); }
-            if (_adminTask.Count == 0) { Init.AdminUtilInit(); }    
+            if (_adminTask.Count == 0) { Init.AdminUtilInit(); }
+
+            var listenerUtils = new List<Models.Util>();
+            var implantUtils = new List<Models.Util>();
+            var taskUtils = new List<Models.Util>();
 
             _out.AppendLine("\nClient Utils\n____________\n");
-            foreach (Models.Util cmd in _utils){ _out.AppendLine($"{cmd.UtilName,-25} {cmd.Desc}"); }
+            foreach (Models.Util cmd in _utils){
+                _out.AppendLine($"{cmd.UtilName,-25} {cmd.Desc}"); 
+            }
 
             _out.AppendLine("\nImplant Tasks\n_____________\n");
             foreach (Models.Task cmd in _opts) { _out.AppendLine($"{cmd.TaskName, -25} {cmd.Desc}"); }

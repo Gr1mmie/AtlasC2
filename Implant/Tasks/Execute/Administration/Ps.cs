@@ -22,6 +22,8 @@ namespace Implant.Tasks.Execute
 
             var procs = Process.GetProcesses();
 
+            // if(task.Args != null) { procs = Process.GetProcesses(task.Args); }
+
             procIDLen = psParse.getMaxProcIDLen(procs);
             procNameLen = psParse.getMaxProcNameLen(procs) + procIDLen; 
             procSessionIDLen = psParse.getMaxProcSessionIDLen(procs) + procNameLen;

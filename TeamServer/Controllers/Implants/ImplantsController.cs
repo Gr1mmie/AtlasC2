@@ -57,10 +57,10 @@ namespace TeamServer.Controllers.Implants
         [HttpPost("{implantId}")]
         public IActionResult TaskImplant(string implantId, [FromBody] ImplantTaskRequest req)
         {
-            var implant = _implants.GetImplant(implantId);
+            Implant implant = _implants.GetImplant(implantId);
             if(implant is null) { return NotFound($"{implantId} not found"); }
 
-            var task = new ImplantTask() { Id = Guid.NewGuid().ToString() , Command = req.Command , Args = req.Args, File = req.File};
+            ImplantTask task = new ImplantTask() { Id = Guid.NewGuid().ToString() , Command = req.Command , Args = req.Args, File = req.File};
             implant.TaskQueue(task);
 
             var root = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}{HttpContext.Request.Path}";
@@ -69,5 +69,14 @@ namespace TeamServer.Controllers.Implants
             return Created(path, task);
         }
 
+        [HttpDelete("{implantId}")]
+        public IActionResult PurgeImplant(string implantId)
+        {
+            Implant implant = _implants.GetImplant(implantId);
+            if (implant is null) { return NotFound($"{implantId} not found"); }
+            _implants.PurgeImplant(implant);
+
+            return Ok($"{implantId} removed");
+        }
     }
 }

