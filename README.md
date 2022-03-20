@@ -76,6 +76,8 @@ Open .sln and build all 3 components in Release mode
 * Encode PowerShell Commands
 * Add admin utils: 
     * `cp` 
+* Allow for the changing of the sleep timing on implant and implement jitter
+* Allow for operator to change port TeamServer starts on via CLI 
 * Encrypted comms (yikes, ik)
 * AppDomain Manipulation - Allow for the creation/removal of AppDomains and allow operator the ability to select which AppDomain to load assemblies into
 * Better extensability capabilities
