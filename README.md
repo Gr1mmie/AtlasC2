@@ -63,6 +63,8 @@ Atlas offers the option to execute an assembly from its entry point or a specifi
 
 For a full list of features, swing by the wiki (add link here)
 
+## Note To Self: u forgot YARA rule. dewit
+
 ## Compilation
 Open .sln and build all 3 components in Release mode
 
