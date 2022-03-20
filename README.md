@@ -76,6 +76,8 @@ Open .sln and build all 3 components in Release mode
 * Encode PowerShell Commands
 * Add admin utils: 
     * `cp` 
+    * `upload`/`download`
+* Some barebones persistence commands (idk something like creating a user via ADSI)
 * Allow for the changing of the sleep timing on implant and implement jitter
 * Allow for operator to change port TeamServer starts on via CLI 
 * Encrypted comms (yikes, ik)
