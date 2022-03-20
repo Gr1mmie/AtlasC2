@@ -49,6 +49,7 @@ Loading assembies takes a few steps unlike something like CobaltStrike that does
 To view assemblies loaded into the implant process, operators can use the `AssemQuery` and `AssemMethodQuery` tasks. The former returns all loaded assemblies while the latter returns All public methods pertaining to a loaded assembly
 
 <img width="613" alt="image" src="https://user-images.githubusercontent.com/57014148/159147810-7f0454a8-860e-43b1-a74e-4e496a59d4ce.png">
+
 The screenshot confirms that the `TestAssem` assembly was indeed loaded into the implant's process.
 
 `AssemMethodQuery` can then be used to return information on `TestAssem` an operator can use to return information used to execute public methods 
