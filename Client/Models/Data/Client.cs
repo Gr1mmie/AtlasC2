@@ -18,7 +18,7 @@ namespace Client.Models
 
         public static bool running = true;
         public static string Prompt = "> ";
-        public const string Ver = "v0.1";
+        public const string Ver = "v1.0";
 
         public static List<String> ImplantList = new List<String>();
         public static List<String> ListenerList = new List<String>();
