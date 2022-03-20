@@ -6,6 +6,7 @@ Atlas is based around gaining a foothold within an environment and further utili
 ## Usage
 ### Starting/Managing Listeners
 To start a new listener, use the `StartListener` command. This command takes two params: Listener name and the port to run on
+
 <img width="356" alt="image" src="https://user-images.githubusercontent.com/57014148/159146033-692c0db2-b7cd-4f10-adff-b8717ae4e990.png">
 
 The `Listeners` command lists all listeners, `ViewListener` returns data on the specified listener, and `RemoveListener` can be used to remove a listener from the list
