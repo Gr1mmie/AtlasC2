@@ -4,6 +4,11 @@ C# C2 Framework centered around Stage 1 operations
 Atlas is based around gaining a foothold within an environment and further utilizing it to smuggle in C# (currently strictly C#) weaponry utilizing an HTTP based implant. Isn't exactly very OPSEC safe in it's current state...at all.
 
 ## Usage
+
+### Starting TeamServer
+
+After generating an exe of the client, teamserver, and implant, simply execute `Teamserver.exe` to start up the teamserver
+
 ### Starting/Managing Listeners
 To start a new listener, use the `StartListener` command. This command takes two params: Listener name and the port to run on
 
