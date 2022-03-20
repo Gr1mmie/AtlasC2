@@ -67,6 +67,7 @@ For a full list of features, swing by the wiki (add link here)
 Open .sln and build all 3 components in Release mode
 
 ## To-Do
+* Authentication
 * Encode PowerShell Commands
 * Encrypted comms (yikes, ik)
 * AppDomain Manipulation - Allow for the creation/removal of AppDomains and allow operator the ability to select which AppDomain to load assemblies into
