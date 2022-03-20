@@ -42,6 +42,12 @@ namespace Implant.Tasks.Execute
 
         }
 
+        public static string ExecuteAssemMethod(string assemName, string assemType, string assemMethod) {
+            Assembly assem = GetAssemblyByName(assemName);
+            var assemOut = assem.GetType(assemType).GetMethod(assemMethod).Invoke(null, null);
+            return assemOut.ToString();
+        }
+
         public static string ExecuteAssemMethod(string assemName, string assemType, string assemMethod, string parameters){
             Assembly assem = GetAssemblyByName(assemName);
             var assemOut = assem.GetType(assemType).GetMethod(assemMethod).Invoke(null, new object[] { parameters });
