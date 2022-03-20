@@ -1,7 +1,7 @@
 # AtlasC2
 C# C2 Framework centered around Stage 1 operations
 
-Atlas is based around gaining a foothold within an environment and further utilizing it to smuggle in C# (currently strictly C#) weaponry utilizing an HTTP based implant. Isn't exactly very OPSEC safe in it's current state...at all.
+Atlas is based around gaining a foothold within an environment and further utilizing it to smuggle in C# (currently strictly C#) weaponry utilizing an HTTP based implant. Isn't exactly very OPSEC safe in it's current state...at all. Currently targets only windows environments
 
 ## Usage
 
