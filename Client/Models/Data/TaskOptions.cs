@@ -2,8 +2,6 @@
 {
     class TaskOptions
     {
-        // https://www.youtube.com/watch?v=C6lhpNkw6H4
-
         public static object assemName = new AssemName();
         public static object assemType = new AssemType();
         public static object assemMethod = new AssemMethod();

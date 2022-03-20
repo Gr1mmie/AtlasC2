@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 
 using Implant.Models;
 
@@ -11,8 +12,15 @@ namespace Implant.Tasks.Execute
         public override string Execute(ImplantTask task)
         {
 
-            Environment.Exit(0);
-            return $"Implant Shutdown";
+            Timer timer = new Timer();
+            timer.Interval = 5000;
+            timer.AutoReset = false;
+            timer.Elapsed += SelfDestruct;
+            timer.Start();
+
+            return "";
         }
+
+        private static void SelfDestruct(object sender, ElapsedEventArgs e) { Environment.Exit(0); }
     }
 }

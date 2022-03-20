@@ -14,11 +14,15 @@ namespace Client.Utils
         {
             try
             {
+                string Proc;
 
-                if (opts != null && opts.Length > 1) { throw new AtlasException($"[*] Usage: Ps\n"); }
+                if (opts != null && opts.Length > 2) { throw new AtlasException($"[*] Usage: Ps <procName>\n"); }
                 if (CurrentImplant is null) { throw new AtlasException("[-] No connected implant"); }
+                
+                Proc = opts[1];
 
-                return TaskOps.sendAdminUtil(TaskName);
+                if (Proc != null) { return TaskOps.sendAdminUtil(TaskName, Proc); }
+                else { return TaskOps.sendAdminUtil(TaskName); }
 
             }
             catch (AtlasException e) { return e.Message; }

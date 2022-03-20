@@ -216,13 +216,11 @@ namespace Client.Utils
         }
         
 
-        public static Classes.TaskSendOut ReturnTaskID(string taskresp) {
-            return JsonConvert.DeserializeObject<Classes.TaskSendOut>(taskresp);
-        }
+        public static Classes.TaskSendOut ReturnTaskID(string taskresp) { return JsonConvert.DeserializeObject<Classes.TaskSendOut>(taskresp); }
 
-        public static Classes.TaskRecvOut ReturnTaskData(string taskOut) {
-            return JsonConvert.DeserializeObject<Classes.TaskRecvOut>(taskOut);
-        }
+        public static Classes.TaskRecvOut ReturnTaskData(string taskOut) { return JsonConvert.DeserializeObject<Classes.TaskRecvOut>(taskOut); }
+
+        public static Classes.ArgsRecv ReturnTaskArgs(string taskArgs) { return JsonConvert.DeserializeObject<Classes.ArgsRecv>(taskArgs); }
 
         public static string PackStartListenerData(string name, int port)
         {

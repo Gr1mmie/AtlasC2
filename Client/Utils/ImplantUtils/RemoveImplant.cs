@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Linq;
 
 using Client.Models;
@@ -24,8 +23,6 @@ namespace Client.Utils
             var implantName = opts[1];
             var _implant = ImplantList.FirstOrDefault(implant => implant.Equals(implantName));
             if (_implant is null) { throw new AtlasException($"[-] Implant {implantName} does not exist"); }
-            
-            //TaskOps.sendAdminUtil("KillSwitch");
 
             Comms.comms.SendDELETE($"{TeamServerAddr}/Implants/{implantName}");
 

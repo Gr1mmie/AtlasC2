@@ -38,7 +38,7 @@ namespace Client.Utils
 
             }
             catch (AtlasException e) { return e.Message; }
-            //catch (System.Net.WebException) { return $"[-] Connection to teamserver could not be established, verify teamserver is active\n"; }
+            catch (System.Net.WebException) { return $"[-] Connection to teamserver could not be established, verify teamserver is active\n"; }
         }
     }
 }

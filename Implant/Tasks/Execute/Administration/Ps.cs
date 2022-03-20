@@ -22,8 +22,6 @@ namespace Implant.Tasks.Execute
 
             var procs = Process.GetProcesses();
 
-            // if(task.Args != null) { procs = Process.GetProcesses(task.Args); }
-
             procIDLen = psParse.getMaxProcIDLen(procs);
             procNameLen = psParse.getMaxProcNameLen(procs) + procIDLen; 
             procSessionIDLen = psParse.getMaxProcSessionIDLen(procs) + procNameLen;
@@ -33,7 +31,14 @@ namespace Implant.Tasks.Execute
             _out.AppendLine($"{"---".Align(procIDLen)} {"--------".Align(procNameLen)} {"---------".Align(procSessionIDLen)}");
 
             foreach (var proc in procs){
-                _out.AppendLine($"{proc.Id.Align(procIDLen)} {proc.ProcessName.Align(procNameLen)} {proc.SessionId.Align(procSessionIDLen)}");
+                if(task.Args != null && proc.ProcessName == task.Args) {
+                    _out.AppendLine($"{proc.Id.Align(procIDLen)} {proc.ProcessName.Align(procNameLen)} " +
+                        $"{proc.SessionId.Align(procSessionIDLen)}");
+                }
+                if (task.Args == null) {
+                    _out.AppendLine($"{proc.Id.Align(procIDLen)} {proc.ProcessName.Align(procNameLen)} " +
+                        $"{proc.SessionId.Align(procSessionIDLen)}");
+                }
             }
 
             _out.AppendLine();

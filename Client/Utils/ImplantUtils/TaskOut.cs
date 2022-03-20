@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 using Client.Models;
 
+using static Client.JSON.Classes;
 using static Client.Models.Client;
 
 namespace Client.Utils.ImplantUtils
@@ -21,17 +18,24 @@ namespace Client.Utils.ImplantUtils
         {
             try
             {
-                if (opts is null) { throw new AtlasException($"[-] No parameters passed\nUsage: TaskOut [taskId]\n"); }
-                if (opts.Length > 2) { throw new AtlasException($"[*] Incorrect parameters passed\nUsage: TaskOut [taskId]\n"); }
+                if (opts is null) { throw new AtlasException($"[*] Usage: TaskOut [taskId]\n"); }
+                if (opts.Length > 2) { throw new AtlasException($"[*] Usage: TaskOut [taskId]\n"); }
 
                 taskId = opts[1];
 
                 StringBuilder _out = new StringBuilder();
 
-                var taskOut = Comms.comms.SendGET($"{TeamServerAddr}/Implants/{CurrentImplant}/{taskId}");
-                var parsedTaskOut = JSONOps.ReturnTaskData(taskOut);
+                string taskOut = Comms.comms.SendGET($"{TeamServerAddr}/Implants/{CurrentImplant}/tasks/{taskId}")
+                    .Replace("\\\\\"", "\"");
+                TaskRecvOut parsedTaskOut = JSONOps.ReturnTaskData(taskOut);
+                ArgsRecv parsedArgs = JSONOps.ReturnTaskArgs(parsedTaskOut.TaskArgs);
 
-                _out.AppendLine(parsedTaskOut.TaskOut);
+                _out.AppendLine($"TaskName: {parsedTaskOut.TaskName}");
+                if (parsedArgs != null) {
+                    _out.AppendLine($"\nParams:");
+                    foreach (TaskArgs param in parsedArgs.Params) { _out.AppendLine($"\t{param.OptionName} - {param.OptionValue}"); }
+                }
+                _out.AppendLine($"Output:\n{parsedTaskOut.TaskOut}");
 
                 return _out.ToString();
             }

@@ -22,7 +22,6 @@ namespace Client.JSON
         [Serializable]
         public class ArgsData
         {
-            //public string Taskname { get; set; }
             public List<TaskArgs> Params { get; set; }
         }
 
@@ -32,7 +31,6 @@ namespace Client.JSON
             public string Command { get; set; }
             public string Args { get; set; }
             public string File { get; set; }
-            //public byte[] File { get; set; }
         }
 
         [Serializable]
@@ -42,7 +40,6 @@ namespace Client.JSON
             public string Command { get; set; }
             public string Args { get; set; }
             public string File { get; set; }
-            //public byte[] File { get; set; }
 
         }
 
@@ -50,6 +47,8 @@ namespace Client.JSON
         public class TaskRecvOut
         {
             public string Id { get; set; }
+            public string TaskName { get; set; }
+            public string TaskArgs { get; set; }
             public string TaskOut { get;set; }
         }
 

@@ -25,6 +25,7 @@ namespace Client.Utils
                 StringBuilder _out = new StringBuilder();
 
                 if (opts is null) { throw new AtlasException($"[*] Usage: StartListener [ListenerName] [ListenerPort]\n"); }
+                if(opts.Length > 3 || opts.Length < 3) { throw new AtlasException($"[*] Usage: StartListener [ListenerName] [ListenerPort]\n"); }
 
                 ListenerName = opts[1];
                 ListenerPort = Int32.Parse(opts[2]);

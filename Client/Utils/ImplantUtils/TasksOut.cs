@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 
 using Newtonsoft.Json;
 
@@ -28,14 +25,13 @@ namespace Client.Utils.ImplantUtils
                 var tasks = Comms.comms.SendGET($"{TeamServerAddr}/Implants/{CurrentImplant}/tasks").TrimStart('[').TrimEnd(']');
                 if (tasks.Length == 0) { throw new AtlasException("[*] No tasks to view\n"); }
 
-                if (tasks.Contains("},{")) { tasks = tasks.Replace("},{", "}&{"); }
+                if (tasks.Contains("},{\"id")) { tasks = tasks.Replace("},{\"id", "}&{\"id"); }
 
                 var taskList = tasks.Split('&');
 
-                foreach (var _task in taskList)
-                {
+                foreach (var _task in taskList) {
                     taskData = JsonConvert.DeserializeObject<JSON.Classes.TaskRecvOut>(_task);
-                    _out.AppendLine($"{taskData.Id} {TaskName}");
+                    _out.AppendLine($"{taskData.Id} {taskData.TaskName}");
                 }
 
                 return _out.ToString();

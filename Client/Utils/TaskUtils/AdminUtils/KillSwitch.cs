@@ -12,7 +12,8 @@ namespace Client.Utils
         public override string AdminUtilExec(string[] opts)
         {
             try {
-                var resp = TaskOps.sendAdminUtil("KillSwitch");
+                TaskOps.sendAdminUtil("KillSwitch");
+                Models.Client.CurrentImplant = null;
                 return "";
             } catch (System.Net.WebException) { throw new Exception($"Implant successfully shutdown"); }
         }
