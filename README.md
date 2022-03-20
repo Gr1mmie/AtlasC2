@@ -69,6 +69,8 @@ Open .sln and build all 3 components in Release mode
 ## To-Do
 * Authentication
 * Encode PowerShell Commands
+* Add admin utils: 
+    * `cp` 
 * Encrypted comms (yikes, ik)
 * AppDomain Manipulation - Allow for the creation/removal of AppDomains and allow operator the ability to select which AppDomain to load assemblies into
 * Better extensability capabilities
