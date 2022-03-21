@@ -91,8 +91,5 @@ Open .sln and build all 3 components in Release mode
 * Shellcode generation via Donut
 * BOFs would be cool 
 
-
-### Note To Self: u forgot YARA rule. dewit
-
 ## Disclaimer
 Atlas was designed soley for educational/ethical purposes. I do not condone nor am I responsible for actions taken by users of Atlas
