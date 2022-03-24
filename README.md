@@ -1,7 +1,7 @@
 # AtlasC2
 C# C2 Framework centered around Stage 1 operations
 
-Atlas is based around gaining a foothold within an environment and further utilizing it to smuggle in C# (currently strictly C#) weaponry utilizing an HTTP based implant. Isn't exactly very OPSEC safe in it's current state...at all.
+Atlas is based around gaining a foothold within an environment and further utilizing it to smuggle in C# (currently strictly C#) weaponry utilizing an HTTP based implant. Isn't exactly very OPSEC safe in it's current state...at all. Currently targets only windows environments
 
 ## Usage
 
@@ -77,7 +77,8 @@ Open .sln and build all 3 components in Release mode
 * Add admin utils: 
     * `cp` 
     * `upload`/`download`
-* Some barebones persistence commands (idk something like creating a user via ADSI)
+* Keylogger (probs make standalone to load into implant)
+* Some barebones persistence commands (idk something like creating a user via ADSI, WMI subscription creation. probs make these standalone assems to load into implant)
 * Allow for the changing of the sleep timing on implant and implement jitter
 * Allow for operator to change port TeamServer starts on via CLI 
 * Encrypted comms (yikes, ik)
@@ -89,9 +90,6 @@ Open .sln and build all 3 components in Release mode
     * droppers/loaders/stagers  
 * Shellcode generation via Donut
 * BOFs would be cool 
-
-
-### Note To Self: u forgot YARA rule. dewit
 
 ## Disclaimer
 Atlas was designed soley for educational/ethical purposes. I do not condone nor am I responsible for actions taken by users of Atlas
