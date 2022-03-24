@@ -3,6 +3,8 @@ C# C2 Framework centered around Stage 1 operations
 
 Atlas is based around gaining a foothold within an environment and further utilizing it to smuggle in C# (currently strictly C#) weaponry utilizing an HTTP based implant. Isn't exactly very OPSEC safe in it's current state...at all. Currently targets only windows environments
 
+Note: Default connection settings on implant are set to connect to localhost on port 8080, this can be changed [here](https://github.com/Gr1mmie/AtlasC2/blob/master/Implant/Program.cs#L72)  
+
 ## Usage
 
 ### Starting TeamServer
