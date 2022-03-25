@@ -41,7 +41,7 @@ It's posible to view the output of a previously run task using `TaskOut`. `Tasks
 <img width="332" alt="image" src="https://user-images.githubusercontent.com/57014148/159146707-6c9ca507-eb50-413a-a7aa-03bceefe5193.png">
 
 ### Shell Execution
-Atlas allows operators to execute both PowerShell and Cmd commands using the `PSShell` and `CMDShell` tasks respectively. `PSShell` opens a new runspace and executes the command so even if `powershell.exe` is blacklisted, PowerShell commands can still be executed. This method also bypasses Constrained Language Mode. `CMDShell` opens a `cmd.exe` process and passes the command into the process. Executing a PowerShell command was shown above so that won't be shown here as well. Site note about `CMDShell`, many common commands executed including (but not limited to) whoami, ipconfig, pwd, and cd have been implemented into the implants functionality to avoid the need to execute such commands via a `cmd.exe` process.
+Atlas allows operators to execute both PowerShell and Cmd commands using the `PSShell` and `CMDShell` tasks respectively. `PSShell` opens a new runspace and executes the command so even if `powershell.exe` is blacklisted, PowerShell commands can still be executed. This method also bypasses Constrained Language Mode. `CMDShell` opens a `cmd.exe` process and passes the command into the process. Executing a PowerShell command was shown above so that won't be shown here as well. Side note about `CMDShell`, many common commands executed including (but not limited to) whoami, ipconfig, pwd, and cd have been implemented into the implants functionality to avoid the need to execute such commands via a `cmd.exe` process.
 
 <img width="307" alt="image" src="https://user-images.githubusercontent.com/57014148/159146916-8db10341-354d-4ab2-8feb-6931d6bc8681.png">
 
@@ -71,7 +71,7 @@ Atlas offers the option to execute an assembly from its entry point or a specifi
 For a full list of features, swing by the wiki (add link here)
 
 ## Compilation
-Open .sln and build all 3 components in Release mode
+Open .sln and build all 3 components in Release mode, exit console windows and exe's should be generated in \bin\debug of each component. I gotta work on something better for this
 
 ## To-Do
 * Authentication
