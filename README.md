@@ -68,7 +68,7 @@ Atlas offers the option to execute an assembly from its entry point or a specifi
 
 <img width="616" alt="image" src="https://user-images.githubusercontent.com/57014148/159148129-0d558363-a4e7-4cfe-a140-acf21c22548f.png">
 
-For a full list of features, swing by the wiki (add link here)
+For a full list of features, swing by the [wiki](https://github.com/Gr1mmie/AtlasC2/wiki)
 
 ## Compilation
 Open .sln and build all 3 components in Release mode, exit console windows and exe's should be generated in \bin\debug of each component. I gotta work on something better for this
